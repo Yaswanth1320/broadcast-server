@@ -23,7 +23,7 @@ const { createClient } = require("./client");
 
 // Display minimal application banner
 console.log(
-  gradient.rainbow(
+  gradient.cristal(
     figlet.textSync("BROADCAST", {
       font: "Standard",
       horizontalLayout: "default",

@@ -8,7 +8,7 @@
 const { createClient } = require("./client");
 
 // Configuration - Railway server
-const SERVER_URL = "wss://web-production-045e7.up.railway.app"; // Railway server
+const SERVER_URL = "wss://web-production-045e7.up.railway.app"; // your deployment url
 const DEFAULT_NAME = "Anonymous";
 
 // Get client name from command line argument

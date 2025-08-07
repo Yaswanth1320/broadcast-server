@@ -8,9 +8,9 @@ const ora = require("ora");
 
 /**
  * Creates a beautifully styled WebSocket client that connects to the broadcast server
- * @param {string} serverUrl - WebSocket server URL
- * @param {string} clientName - Initial client name (can be changed later)
- * @returns {WebSocket} The WebSocket client instance
+ * serverUrl - WebSocket server URL
+ * clientName - Initial client name (can be changed later)
+ * returns - The WebSocket client instance
  */
 function createClient(serverUrl, clientName = "Anonymous") {
   // Create WebSocket connection to the server
@@ -23,7 +23,7 @@ function createClient(serverUrl, clientName = "Anonymous") {
   // Display minimal welcome banner
   console.clear();
   console.log(
-    gradient.rainbow(
+    gradient.cristal(
       figlet.textSync("BROADCAST", {
         font: "Standard",
         horizontalLayout: "default",
@@ -66,7 +66,7 @@ function createClient(serverUrl, clientName = "Anonymous") {
 
     /**
      * Handle user input from the command line
-     * @param {string} input - User input string
+     * input - User input string
      */
     rl.on("line", (input) => {
       const trimmedInput = input.trim();
@@ -118,7 +118,7 @@ function createClient(serverUrl, clientName = "Anonymous") {
 
   /**
    * Handle incoming messages from the server
-   * @param {Buffer|String} data - Raw message data from server
+   * data - Raw message data from server
    */
   ws.on("message", (data) => {
     try {
@@ -177,8 +177,8 @@ function createClient(serverUrl, clientName = "Anonymous") {
 
   /**
    * Handle connection closure
-   * @param {number} code - Close code
-   * @param {string} reason - Close reason
+   * code - Close code
+   * reason - Close reason
    */
   ws.on("close", (code, reason) => {
     isConnected = false;
@@ -193,7 +193,7 @@ function createClient(serverUrl, clientName = "Anonymous") {
 
   /**
    * Handle connection errors
-   * @param {Error} error - Error object
+   * error - Error object
    */
   ws.on("error", (error) => {
     spinner.fail(chalk.red("Connection failed!"));

@@ -6,15 +6,15 @@ const gradient = require("gradient-string");
 
 /**
  * Creates and starts a WebSocket broadcast server
- * @param {number} port - Port number to listen on (default: 8080)
- * @param {string} host - Host address to bind to (default: localhost)
- * @returns {WebSocket.Server} The WebSocket server instance
+ * port - Port number to listen on (default: 8080)
+ * host - Host address to bind to (default: localhost)
+ * returns - The WebSocket server instance
  */
 function createServer(port = 8080, host = "localhost") {
   // Display minimal server banner
   console.clear();
   console.log(
-    gradient.rainbow(
+    gradient.cristal(
       figlet.textSync("BROADCAST SERVER", {
         font: "Standard",
         horizontalLayout: "default",
@@ -50,8 +50,8 @@ function createServer(port = 8080, host = "localhost") {
 
   /**
    * Handle new client connections
-   * @param {WebSocket} ws - WebSocket connection instance
-   * @param {Object} req - HTTP request object
+   * ws - WebSocket connection instance
+   * req - HTTP request object
    */
   wss.on("connection", (ws, req) => {
     const clientId = ++clientCount;
@@ -109,7 +109,7 @@ function createServer(port = 8080, host = "localhost") {
 
     /**
      * Handle incoming messages from clients
-     * @param {Buffer|String} data - Raw message data
+     * data - Raw message data
      */
     ws.on("message", (data) => {
       try {
@@ -160,8 +160,8 @@ function createServer(port = 8080, host = "localhost") {
 
     /**
      * Handle client disconnection
-     * @param {number} code - Close code
-     * @param {string} reason - Close reason
+     * code - Close code
+     * reason - Close reason
      */
     ws.on("close", (code, reason) => {
       const clientName = clientInfo.name;
@@ -187,7 +187,7 @@ function createServer(port = 8080, host = "localhost") {
 
     /**
      * Handle WebSocket errors for individual clients
-     * @param {Error} error - Error object
+     * error - Error object
      */
     ws.on("error", (error) => {
       console.error(
@@ -201,9 +201,9 @@ function createServer(port = 8080, host = "localhost") {
 
   /**
    * Handle special commands from clients
-   * @param {number} clientId - Client ID
-   * @param {string} command - Command string
-   * @param {WebSocket} ws - WebSocket connection
+   * clientId - Client ID
+   * command - Command string
+   * ws - WebSocket connection
    */
   function handleSpecialCommand(clientId, command, ws) {
     const clientInfo = clients.get(clientId);
@@ -301,9 +301,9 @@ function createServer(port = 8080, host = "localhost") {
 
   /**
    * Send error message to a specific client
-   * @param {WebSocket} ws - WebSocket connection
-   * @param {string} message - Error message
-   * @param {number} clientId - Client ID
+   * ws - WebSocket connection
+   * message - Error message
+   * clientId - Client ID
    */
   function sendError(ws, message, clientId) {
     const errorMessage = {
@@ -317,7 +317,7 @@ function createServer(port = 8080, host = "localhost") {
 
   /**
    * Handle server-level errors
-   * @param {Error} error - Error object
+   * error - Error object
    */
   wss.on("error", (error) => {
     console.error(chalk.red("❌ Server error:"), error.message);
@@ -355,7 +355,7 @@ function createServer(port = 8080, host = "localhost") {
 
   /**
    * Broadcast message to all connected clients
-   * @param {Object} message - Message object to broadcast
+   * message - Message object to broadcast
    */
   function broadcastToAll(message) {
     const messageStr = JSON.stringify(message);
@@ -368,8 +368,8 @@ function createServer(port = 8080, host = "localhost") {
 
   /**
    * Broadcast message to all clients except the sender
-   * @param {WebSocket} senderWs - Sender's WebSocket connection
-   * @param {Object} message - Message object to broadcast
+   * senderWs - Sender's WebSocket connection
+   * message - Message object to broadcast
    */
   function broadcastToOthers(senderWs, message) {
     const messageStr = JSON.stringify(message);
