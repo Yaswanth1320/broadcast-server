@@ -7,8 +7,8 @@
 
 const { createClient } = require("./client");
 
-// Configuration - Update these values
-const SERVER_URL = "ws://localhost:8080"; // Change to your server URL
+// Configuration - Railway server
+const SERVER_URL = "wss://web-production-045e7.up.railway.app"; // Railway server
 const DEFAULT_NAME = "Anonymous";
 
 // Get client name from command line argument
